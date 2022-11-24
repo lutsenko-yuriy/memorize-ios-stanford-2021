@@ -10,29 +10,32 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HStack {
-            CardView()
-            CardView(isFaceUp: false)
-            CardView(isFaceUp: false)
-            CardView()
+            CardView(content: "😀")
+            CardView(content: "🧐")
+            CardView(content: "😝")
+            CardView(content: "😎")
         }
         .padding(.horizontal)
     }
 }
 
 struct CardView: View {
-    var isFaceUp: Bool = true
+    var content = "🤪"
+    @State var isFaceUp: Bool = false
     
     var body: some View {
         let shape = RoundedRectangle(cornerRadius: 20.0)
-        if isFaceUp {
-            ZStack {
+        ZStack {
+            if isFaceUp {
                 shape.fill(.white)
                 shape.stroke(lineWidth: 3.0)
                     .foregroundColor(.red)
-                Text("🤪").font(.largeTitle)
+                Text(content).font(.largeTitle)
+            } else {
+                shape.fill(.red)
             }
-        } else {
-            shape.fill(.red)
+        }.onTapGesture {
+            isFaceUp = !isFaceUp
         }
     }
 }
