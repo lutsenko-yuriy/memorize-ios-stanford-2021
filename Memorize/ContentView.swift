@@ -9,20 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        return ZStack {
+        HStack {
+            CardView()
+            CardView()
+            CardView()
+            CardView()
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct CardView: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 20.0)
+                .fill(.white)
             RoundedRectangle(cornerRadius: 20.0)
                 .stroke(lineWidth: 3.0)
                 .foregroundColor(.red)
-            
-            Text("Hello world!")
+            Text("🤪")
                 .foregroundColor(.orange)
         }
-        .padding(.horizontal)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
+        ContentView()
+            .preferredColorScheme(.light)
     }
 }
