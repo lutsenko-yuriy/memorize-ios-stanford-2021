@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    var emojis = ["😀", "😀", "🧐", "😝", "😎"]
+    
     var body: some View {
         HStack {
-            CardView(content: "😀")
-            CardView(content: "🧐")
-            CardView(content: "😝")
-            CardView(content: "😎")
+            ForEach(emojis, id: \.self) {
+                CardView(content: $0)
+            }
         }
         .padding(.horizontal)
     }
 }
 
 struct CardView: View {
-    var content = "🤪"
+    var content: String
     @State var isFaceUp: Bool = false
     
     var body: some View {
