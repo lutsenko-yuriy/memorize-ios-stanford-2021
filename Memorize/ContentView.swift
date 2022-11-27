@@ -9,38 +9,40 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var viewModel = EmojiMemoryGame()
+    let viewModel: EmojiMemoryGame
     
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 75, maximum: 100))]) {
-                    ForEach(viewModel.cards) {
-                        CardView(content: $0.content, isFaceUp: $0.isFacedUp)
+                    ForEach(viewModel.cards) { card in
+                        CardView(card: card)
                             .aspectRatio(2/3, contentMode: .fit)
+                            .font(.largeTitle)
+                            .onTapGesture {
+                                viewModel.choose(card)
+                            }
                     }
                 }
             }
-            Spacer()
-            .font(.largeTitle)
-            .padding(.horizontal)
         }
         .padding(.horizontal)
     }
 }
 
 struct CardView: View {
-    var content: String = ""
-    var isFaceUp: Bool = false
+    let card: MemoryGame<String>.Card
     
     var body: some View {
         let shape = RoundedRectangle(cornerRadius: 20.0)
         ZStack {
-            if isFaceUp {
+            if card.isFacedUp {
                 shape.fill(.white)
                 shape.strokeBorder(lineWidth: 3.0)
                     .foregroundColor(.red)
-                Text(content).font(.largeTitle)
+                Text(card.content)
+                    .font(.largeTitle)
+                    .fontWeight(.black)
             } else {
                 shape.fill(.red)
             }
@@ -50,9 +52,11 @@ struct CardView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let viewModel = EmojiMemoryGame()
+        
+        ContentView(viewModel: viewModel)
             .preferredColorScheme(.dark)
-        ContentView()
+        ContentView(viewModel: viewModel)
             .preferredColorScheme(.light)
     }
 }
