@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MemoryGame<CardContent : Equatable> {
+struct MemoryGame<CardContent> where CardContent : Equatable {
     
     private(set) var cards: Array<Card>
     
@@ -18,7 +18,10 @@ struct MemoryGame<CardContent : Equatable> {
             return
         }
         
-        guard !cards[requiredCardIndex].isMatched else {
+        guard
+            !cards[requiredCardIndex].isMatched,
+            !cards[requiredCardIndex].isFacedUp
+        else {
             return
         }
         
@@ -27,11 +30,6 @@ struct MemoryGame<CardContent : Equatable> {
         }
         
         cards[requiredCardIndex].isFacedUp.toggle()
-        
-        if selectedCardIndex == requiredCardIndex {
-            selectedCardIndex = nil
-            return
-        }
         
         if selectedCardIndex == nil {
             selectedCardIndex = requiredCardIndex
