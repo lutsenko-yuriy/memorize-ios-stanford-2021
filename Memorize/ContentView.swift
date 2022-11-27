@@ -36,7 +36,7 @@ struct CardView: View {
     var body: some View {
         let shape = RoundedRectangle(cornerRadius: 20.0)
         ZStack {
-            if card.isFacedUp {
+            if card.isFacedUp || card.isMatched {
                 shape.fill(.white)
                 shape.strokeBorder(lineWidth: 3.0)
                     .foregroundColor(.red)
