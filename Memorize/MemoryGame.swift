@@ -19,7 +19,6 @@ struct MemoryGame<CardContent> {
         }
         
         cards[requiredCardIndex].isFacedUp.toggle()
-        print("\(cards)")
     }
                     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {

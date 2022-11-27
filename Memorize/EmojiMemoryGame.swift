@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class EmojiMemoryGame {
+class EmojiMemoryGame : ObservableObject {
     
     static let emojis = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map { "\($0)" }
     
@@ -16,7 +16,7 @@ class EmojiMemoryGame {
         MemoryGame<String>(numberOfPairsOfCards: 6) { pairIndex in emojis[pairIndex] }
     }
     
-    private var model: MemoryGame<String> = createNewGame()
+    @Published private var model: MemoryGame<String> = createNewGame()
     
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
