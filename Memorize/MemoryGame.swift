@@ -11,8 +11,11 @@ struct MemoryGame<CardContent> where CardContent : Equatable {
     
     private(set) var cards: Array<Card>
     
-    private(set) var selectedCardIndex: Int?
-    
+    private var selectedCardIndex: Int? {
+        get { cards.indices.filter { cards[$0].isSelected }.oneAndOnly }
+        set { cards.indices.forEach { cards[$0].isSelected = ($0 == newValue) } }
+    }
+
     mutating func choose(_ card: Card) {
         guard
             let requiredCardIndex = cards.firstIndex(where: { $0.id == card.id }),
@@ -22,29 +25,16 @@ struct MemoryGame<CardContent> where CardContent : Equatable {
             return
         }
         
-        if selectedCardIndex == nil {
-            resetCardsFacingUp()
-        }
-        
-        cards[requiredCardIndex].isSelected = true
-        
-        if selectedCardIndex == nil {
+        if let selectedCardIndex = self.selectedCardIndex {
+            
+            if cards[selectedCardIndex].content == cards[requiredCardIndex].content {
+                cards[requiredCardIndex].isMatched = true
+                cards[selectedCardIndex].isMatched = true
+            }
+            
+            cards[requiredCardIndex].isSelected = true
+        } else {
             selectedCardIndex = requiredCardIndex
-            return
-        }
-        
-        
-        if cards[selectedCardIndex!].content == cards[requiredCardIndex].content {
-            cards[requiredCardIndex].isMatched = true
-            cards[selectedCardIndex!].isMatched = true
-        }
-        
-        selectedCardIndex = nil
-    }
-    
-    private mutating func resetCardsFacingUp() {
-        for i in cards.indices {
-            cards[i].isSelected = false
         }
     }
     
@@ -65,5 +55,11 @@ struct MemoryGame<CardContent> where CardContent : Equatable {
         var isSelected = false
         var isMatched = false
         var content: CardContent
+    }
+}
+
+extension Array {
+    var oneAndOnly: Element? {
+        count == 1 ? first : nil
     }
 }
