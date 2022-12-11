@@ -24,6 +24,10 @@ class EmojiMemoryGame : ObservableObject {
         model.cards
     }
     
+    func shuffle() {
+        model.shuffle()
+    }
+    
     // MARK: - Intent
     
     func choose(_ card: Card) {
