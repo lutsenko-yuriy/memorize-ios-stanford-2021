@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F443CFF52945F872001B181F /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F443CFF42945F872001B181F /* Pie.swift */; };
 		F4BBCC822932BB4300CB8140 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BBCC812932BB4300CB8140 /* MemoryGame.swift */; };
 		F4BBCC842932BE5F00CB8140 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BBCC832932BE5F00CB8140 /* EmojiMemoryGame.swift */; };
 		F4E372D3292907F5003CE5D1 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E372D2292907F5003CE5D1 /* MemorizeApp.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F443CFF42945F872001B181F /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		F4BBCC812932BB4300CB8140 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		F4BBCC832932BE5F00CB8140 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		F4E372CF292907F5003CE5D1 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				F4BBCC812932BB4300CB8140 /* MemoryGame.swift */,
 				F4BBCC832932BE5F00CB8140 /* EmojiMemoryGame.swift */,
 				F4F71570293DD65200D95475 /* AspectVGrid.swift */,
+				F443CFF42945F872001B181F /* Pie.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F443CFF52945F872001B181F /* Pie.swift in Sources */,
 				F4BBCC822932BB4300CB8140 /* MemoryGame.swift in Sources */,
 				F4E372D5292907F5003CE5D1 /* EmojiMemoryGameView.swift in Sources */,
 				F4E372D3292907F5003CE5D1 /* MemorizeApp.swift in Sources */,
