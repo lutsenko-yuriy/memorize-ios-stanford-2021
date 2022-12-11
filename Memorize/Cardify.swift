@@ -17,11 +17,12 @@ struct Cardify: ViewModifier {
                 shape.fill(.white)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
                     .foregroundColor(.red)
-                content
             } else {
                 shape.fill()
                     .foregroundColor(.red)
             }
+            
+            content.opacity(isFaceUp ? 1 : 0)
         }
     }
     
